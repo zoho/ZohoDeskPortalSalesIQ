@@ -3,7 +3,7 @@
 
 import PackageDescription
 
-let version = "4.1.1"
+let version = "4.2.0"
 let package = Package(
     name: "ZohoDeskPortalSalesIQ",
     platforms: [
@@ -13,20 +13,22 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "ZohoDeskPortalSalesIQ",
-            targets: ["ZohoDeskPortalSalesIQ", "Mobilisten", "ZohoDeskPortalSalesIQPackage"]),
+            targets: ["ZohoDeskPortalSalesIQ", "ZohoDeskPortalSalesIQPackage"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/zoho/ZohoDeskPortalConfiguration.git", exact: "4.1.2")
+        .package(url: "https://github.com/zoho/ZohoDeskPortalConfiguration.git", exact: "4.2.0"),
+        .package(url: "https://github.com/zoho/SalesIQ-Mobilisten-iOS-SP.git", exact: "9.2.6")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
-        .binaryTarget(name: "ZohoDeskPortalSalesIQ", url: "https://maven.zohodl.com/ZohoDesk/ZohoDeskPortalSalesIQ/\(version)/ZohoDeskPortalSalesIQ.zip", checksum: "3a4d0f64d617ab2abb49247973075bfeb6f5c7885cf5373894dd0be664a30779"),
-        .binaryTarget(name: "Mobilisten", url: "https://raw.githubusercontent.com/zoho/SalesIQ-Mobilisten-iOS/v9.2.1/Mobilisten.zip", checksum: "a9b9da480a5280d677be38e5a33e6b51549a2afe806f213badf758bcbc597662"),
+        .binaryTarget(name: "ZohoDeskPortalSalesIQ", url: "https://maven.zohodl.com/ZohoDesk/ZohoDeskPortalSalesIQ/\(version)/ZohoDeskPortalSalesIQ.zip", checksum: "b311c3c0fd05045c7bf9e28a7ed6c8d26cb96b5a5b1975c77005282c87588165"),
+        
         .target(
             name: "ZohoDeskPortalSalesIQPackage",
             dependencies: [
-                .product(name: "ZohoDeskPortalConfiguration", package: "ZohoDeskPortalConfiguration")
+                .product(name: "ZohoDeskPortalConfiguration", package: "ZohoDeskPortalConfiguration"),
+                .product(name: "Mobilisten", package: "SalesIQ-Mobilisten-iOS-SP")
             ]
         )
     ]
