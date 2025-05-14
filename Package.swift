@@ -13,22 +13,20 @@ let package = Package(
         // Products define the executables and libraries a package produces, making them visible to other packages.
         .library(
             name: "ZohoDeskPortalSalesIQ",
-            targets: ["ZohoDeskPortalSalesIQ", "ZohoDeskPortalSalesIQPackage"]),
+            targets: ["ZohoDeskPortalSalesIQ", "Mobilisten", "ZohoDeskPortalSalesIQPackage"]),
     ],
     dependencies: [
-        .package(url: "https://github.com/zoho/ZohoDeskPortalConfiguration.git", exact: "4.2.0"),
-        .package(url: "https://github.com/zoho/SalesIQ-Mobilisten-iOS-SP.git", exact: "9.2.6")
+        .package(url: "https://github.com/zoho/ZohoDeskPortalConfiguration.git", exact: "4.2.0")
     ],
     targets: [
         // Targets are the basic building blocks of a package, defining a module or a test suite.
         // Targets can depend on other targets in this package and products from dependencies.
         .binaryTarget(name: "ZohoDeskPortalSalesIQ", url: "https://maven.zohodl.com/ZohoDesk/ZohoDeskPortalSalesIQ/\(version)/ZohoDeskPortalSalesIQ.zip", checksum: "b311c3c0fd05045c7bf9e28a7ed6c8d26cb96b5a5b1975c77005282c87588165"),
-        
+        .binaryTarget(name: "Mobilisten", url: "https://raw.githubusercontent.com/zoho/SalesIQ-Mobilisten-iOS/v9.2.6/Mobilisten.zip", checksum: "65129b82119e0a5b67f61544a1474b697f94c5aa75e2ac71bc4ce3fae9e2f506"),
         .target(
             name: "ZohoDeskPortalSalesIQPackage",
             dependencies: [
-                .product(name: "ZohoDeskPortalConfiguration", package: "ZohoDeskPortalConfiguration"),
-                .product(name: "Mobilisten", package: "SalesIQ-Mobilisten-iOS-SP")
+                .product(name: "ZohoDeskPortalConfiguration", package: "ZohoDeskPortalConfiguration")
             ]
         )
     ]
